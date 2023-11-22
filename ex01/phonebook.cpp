@@ -8,7 +8,10 @@ class PhoneBook
 
 class Contact
 {
-	
+	private:
+		std::FirstName;
+		std::LastName;
+		std::NickName;
 };
 
 int	main()
