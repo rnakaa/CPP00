@@ -10,11 +10,11 @@ class PhoneBook
 class Contact
 {
 	private:
-		std::FirstName;
-		std::LastName;
-		std::NickName;
-		std::PhoneNumber;
-		std::Secret;
+		std::string FirstName;
+		std::string LastName;
+		std::string NickName;
+		std::string PhoneNumber;
+		std::string Secret;
 };
 
 int	main()
