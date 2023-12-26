@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 
 class Contact
 {
@@ -10,6 +11,7 @@ class Contact
  		std::string PhoneNumber;
  		std::string Secret;
 	public:
+		Contact(){};
 		Contact(std::string first, std::string last, std::string nick, std::string num, std::string secret){
 			FirstName = first;
 			LastName = last;
@@ -17,8 +19,8 @@ class Contact
 			PhoneNumber = num;
 			Secret = secret;
 		}
-		void getName(){
-			std::cout << FirstName <<std::endl;
+		std::string getName(){
+			return(FirstName);
 		}
 };
 
@@ -31,8 +33,8 @@ class PhoneBook
 			contacts[index] = Contact(first, last, nick, num, secret);
 		}
 
-		getContactName(int index){
-			std::cout << contacts[index].getName() << std::endl;
+		std::string getContactName(int index){
+			return(contacts[index].getName());
 		}
 };
 
@@ -40,6 +42,7 @@ int	main()
 {
 	std::string	command;
 	PhoneBook	phonebook;
+	int		count;
 	int		index;
 
 //-------------------------SECTION NO.00--------------------------------------------------------
@@ -48,19 +51,45 @@ int	main()
 	std::string	nick;
 	std::string	num;
 	std::string	secret;
-	std::cin >> first >> last >> nick >> num >> secret;
-//------------------------------------------------------------
-	index = 0;
+//----------------------------------------------------------------------------------------------
+	count = 0;
 	while (true)
 	{
-		std::getline(std::cin, command);
-		std::cout << command << std::endl;
-		if (strcmp(command.c_str(), "EXIT") == 0)
+		//std::getline(std::cin, command);
+		std::cin >> command;
+		if (std::cin.eof() || std::cin.fail()){
+				std::cout << std::endl;
+				return (0);
+		}
+		if (command == "EXIT")
 			return (0);
-		else if (strcmp(command.c_str(), "ADD") == 0)
-			phonebook.addcontact(index % 8, first, last, nick, num, secret);
-		else if (strcmp(command.c_str(), "SHOW") == 0)
-			phonebook.contacts[index % 8].getName();
+		else if (command == "ADD"){
+			std::cout << "First Name" << std::endl;
+			std::cin >> first;
+			std::cout << "Last Name" << std::endl;
+			std::cin >> last;
+			std::cout << "Nick Name" << std::endl;
+			std::cin >> nick;
+			std::cout << "Number" << std::endl;
+			std::cin >> num;
+			std::cout << "Secret" << std::endl;
+			std::cin >> secret;		
+			phonebook.addcontact(count % 8, first, last, nick, num, secret);
+			count++;
+		}
+		else if (command == "SEARCH"){
+			std::cin >> index;
+			if (index > 8 || index <= 0){
+					std::cout << "out of index range" << std::endl;
+					break;
+			}
+			index--;
+			std::cout << index << std::endl;
+			std::cout << phonebook.getContactName(index) << std::endl;
+		}
+		else
+			std::cout << "EXIT or ADD or SEARCH" << std::endl;
+		std::cin.clear();
 	}
 	return (0);
 }
