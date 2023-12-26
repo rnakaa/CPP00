@@ -10,39 +10,62 @@ class Contact
  		std::string PhoneNumber;
  		std::string Secret;
 	public:
-		void setContact(int index, std::string input);
-		set contact(void)
+		Contact(std::string first, std::string last, std::string nick, std::string num, std::string secret){
+			FirstName = first;
+			LastName = last;
+			NickName = nick;
+			PhoneNumber = num;
+			Secret = secret;
+		}
+		void getName(){
+			std::cout << FirstName <<std::endl;
+		}
 };
 
 class PhoneBook
 {
 	private:
-// 		int number;
-// 		std::string name;
+		Contact	contacts[8];
 	public:
-		void addcontact()
-		Contact contact[8];
+		void addcontact(int index,std::string first, std::string last, std::string nick, std::string num, std::string secret){
+			contacts[index] = Contact(first, last, nick, num, secret);
+		}
+
+		getContactName(int index){
+			std::cout << contacts[index].getName() << std::endl;
+		}
 };
 
 int	main()
 {
 	std::string	command;
 	PhoneBook	phonebook;
+	int		index;
 
-//	phonebook.contact[0].FirstName = "Alpha";
-//	std::cout << phonebook.contact[0].FirstName << std::endl;
-
-//	while (true)
-//	{
-//		std::getline(std::cin, command);
-//		std::cout << command << std::endl;
-//		if (strcmp(command, "EXIT")
-//			return (0);
-//		if (strcmp(command, "ADD")
-//			phonebook.addcontact();
-//	}
+//-------------------------SECTION NO.00--------------------------------------------------------
+	std::string	first;
+	std::string	last;
+	std::string	nick;
+	std::string	num;
+	std::string	secret;
+	std::cin >> first >> last >> nick >> num >> secret;
+//------------------------------------------------------------
+	index = 0;
+	while (true)
+	{
+		std::getline(std::cin, command);
+		std::cout << command << std::endl;
+		if (strcmp(command.c_str(), "EXIT") == 0)
+			return (0);
+		else if (strcmp(command.c_str(), "ADD") == 0)
+			phonebook.addcontact(index % 8, first, last, nick, num, secret);
+		else if (strcmp(command.c_str(), "SHOW") == 0)
+			phonebook.contacts[index % 8].getName();
+	}
 	return (0);
 }
+
+
 
 // # memo
 //			PhoneBook::addcontact();//　インスタンス必要ない，代入などが起こらない，実行のみ
