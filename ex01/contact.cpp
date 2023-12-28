@@ -8,7 +8,22 @@ Contact::Contact(std::string first, std::string last, std::string nick, std::str
 	Secret = secret;
 }
 
-std::string Contact::getName(){
+std::string Contact::getFirst(){
 	return(FirstName);
 }
 
+std::string Contact::getLast(){
+	return(LastName);
+}
+
+std::string Contact::getNick(){
+	return(NickName);
+}
+
+std::string Contact::getNum(){
+	return(PhoneNumber);
+}
+
+std::string Contact::getSecret(){
+	return(Secret);
+}

@@ -12,17 +12,10 @@ int	main()
 	int		count;
 	int		index;
 
-//-------------------------SECTION NO.00--------------------------------------------------------
-	std::string	first;
-	std::string	last;
-	std::string	nick;
-	std::string	num;
-	std::string	secret;
-//----------------------------------------------------------------------------------------------
 	count = 0;
 	while (true)
 	{
-		//std::getline(std::cin, command);
+		
 		std::cin >> command;
 		if (std::cin.eof() || std::cin.fail()){
 				std::cout << std::endl;
@@ -63,6 +56,7 @@ int	main()
 
 
 
+//std::getline(std::cin, command);
 // # memo
 //			PhoneBook::addcontact();//　インスタンス必要ない，代入などが起こらない，実行のみ
 //			std::cout　これと一緒
