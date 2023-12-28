@@ -23,6 +23,6 @@ class Contact
 
 		std::string getName();
 
-		void setContact(std::string first, std::string last, std::string nick, std::string num, std::string secret);
+		Contact(std::string first, std::string last, std::string nick, std::string num, std::string secret);
 };
 #endif
