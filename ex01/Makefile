@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c
+CFLAGS=-c -std=c++98
 TARGET=ex01
 
 OBJ= phonebook.o main.o contact.o

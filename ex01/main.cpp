@@ -1,21 +1,26 @@
 #include <iostream>
+#include <cctype>
+#include <stdlib.h>
 #include <string>
 #include "phonebook.hpp"
-
-
-
 
 int	main()
 {
 	std::string	command;
 	PhoneBook	phonebook;
-	int		count;
-	int		index;
+	int			count;
+	std::string	index;
+	std::string first;
+	std::string last;
+	std::string nick;
+	std::string num;
+	std::string secret;
+
 
 	count = 0;
 	while (true)
 	{
-		
+		std::cout << "$";
 		std::cin >> command;
 		if (std::cin.eof() || std::cin.fail()){
 				std::cout << std::endl;
@@ -23,6 +28,7 @@ int	main()
 		}
 		if (command == "EXIT")
 			return (0);
+
 		else if (command == "ADD"){
 			std::cout << "First Name" << std::endl;
 			std::cin >> first;
@@ -33,39 +39,27 @@ int	main()
 			std::cout << "Number" << std::endl;
 			std::cin >> num;
 			std::cout << "Secret" << std::endl;
-			std::cin >> secret;		
+			std::cin >> secret;
 			phonebook.addcontact(count % 8, first, last, nick, num, secret);
 			count++;
 		}
 		else if (command == "SEARCH"){
+			if (phonebook.printContacts())
+				continue ;
+			std::cout << "insert index: ";
 			std::cin >> index;
-			if (index > 8 || index <= 0){
-					std::cout << "out of index range" << std::endl;
-					break;
-			}
-			index--;
-			std::cout << index << std::endl;
-			std::cout << phonebook.getContactName(index) << std::endl;
-		}
-		else
-			std::cout << "EXIT or ADD or SEARCH" << std::endl;
-		std::cin.clear();
+			if ((int)index.length() != 1 || !std::isdigit(index[0]))
+				continue ;
+			const char * c_num = index.c_str();
+			int index_num = atoi(c_num);
+			if (index_num < 0 || index_num >= phonebook.getCurrentIndex())
+				continue ;
+			phonebook.printContactOneline(index_num);
+ 		}
+ 		else
+ 			std::cout << "EXIT or ADD or SEARCH" << std::endl;
+ 		std::cin.clear();
 	}
 	return (0);
 }
-
-
-
-//std::getline(std::cin, command);
-// # memo
-//			PhoneBook::addcontact();//　インスタンス必要ない，代入などが起こらない，実行のみ
-//			std::cout　これと一緒
-//			インスタンス.関数 で呼ぶときはインスタンス内の変数への代入が起こる
-// 1. user input
-// 2. is_command
-// 3. exute command
-// 	a. add -> 任意のインデックス番目のコンタクトに値を入れる
-// 	b. SEARCH -> 表示する
-// 	c. EXIT
-
 

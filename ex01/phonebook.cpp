@@ -3,10 +3,11 @@
 
 void PhoneBook::addcontact(int index,std::string first, std::string last, std::string nick, std::string num, std::string secret){
 	contacts[index] = Contact(first, last, nick, num, secret);
+	incCurrentIndex();
 }
 
 std::string PhoneBook::getContactFirst(int index){
-	return(contacts[index].getFist());
+	return(contacts[index].getFirst());
 }
 
 std::string PhoneBook::getContactLast(int index){
@@ -60,10 +61,49 @@ void PhoneBook::printContactSecret(int index){
 	std::cout << secret;
 }
 
+void PhoneBook::printContact(int index){
+	std::cout << index;	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactFirst(index);	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactLast(index);	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactNick(index);	
+	std::cout << "|";
+	std::cout << std::endl;
+}
 
-std::string PhoneBook::printContacts(){
+int PhoneBook::printContacts(){
 	int index = 0;
 
-	while (i < 8)
-			PhoneBook::printContact(index);
+	if (current_index == 0)
+		return 1;
+ 	while (index < current_index)
+ 			PhoneBook::printContact(index++);
+	return 0;
+}
+
+int PhoneBook::getCurrentIndex(){
+	return (current_index);
+}
+
+void PhoneBook::incCurrentIndex(){
+	if (current_index < 8)
+		current_index++;
+}
+
+void PhoneBook::printContactOneline(int index){
+	std::cout << index;	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactFirst(index);	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactLast(index);	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactNick(index);	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactNum(index);	
+	std::cout << "|";
+	std::cout << std::setw(10) << PhoneBook::getContactSecret(index);	
+	std::cout << "|";
+	std::cout << std::endl;
 }
