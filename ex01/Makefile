@@ -1,19 +1,24 @@
-CC=g++
-CFLAGS=-c -std=c++98
-TARGET=ex01
+CC = c++
+
+CFLAGS= -Wall -Wextra -Werror -std=c++98
+
+TARGET = PhoneBook
+
+SRCS =  main.cpp \
+	phonebook.cpp \
+	contact.cpp
+
+OBJS = $(SRCS:.cpp=.o)
+
+HEADERS = Contact.hpp \
+	Phonebook.hpp
+
+$(TARGET) : $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+%.o : %.cpp 
 
 OBJ= phonebook.o main.o contact.o
-
-$(TARGET):$(OBJ)
-	$(CC) $(OBJ) -o $(TARGET)
-
-main.o: main.cpp contact.hpp phonebook.hpp
-	$(CC) $(CFLAGS) main.cpp
-
-phonebook.o: phonebook.cpp phonebook.hpp
-	$(CC) $(CFLAGS) phonebook.cpp
-contact.o: contact.cpp contact.hpp
-	$(CC) $(CFLAGS) contact.cpp
 
 
 clean:
