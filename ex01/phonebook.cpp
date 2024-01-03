@@ -61,11 +61,11 @@ void PhoneBook::printContactSecret(int index){
 	std::cout << secret;
 }
 
-std::string extractFirstTen(std::string str){
+std::string PhoneBook::extractFirstTen(std::string str){
 	std::string result = str;
 
 	if (str.length() > 10){
-		result = str.substr(10);
+		result = str.substr(0,10);
 	}
 	return (result);
 }
@@ -73,12 +73,11 @@ std::string extractFirstTen(std::string str){
 void PhoneBook::printContact(int index){
 	std::cout << index;	
 	std::cout << "|";
-	//std::cout << std::setw(10) << PhoneBook::getContactFirst(index);	
-	std::cout << std::setw(10) << PhoneBook::extractFirstTen(std::string("aaaaaaaaaaa"));	
+	std::cout << std::setw(10) << PhoneBook::extractFirstTen(PhoneBook::getContactFirst(index));	
 	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactLast(index);	
+	std::cout << std::setw(10) << PhoneBook::extractFirstTen(PhoneBook::getContactLast(index));	
 	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactNick(index);	
+	std::cout << std::setw(10) << PhoneBook::extractFirstTen(PhoneBook::getContactNick(index));	
 	std::cout << "|";
 	std::cout << std::endl;
 }
