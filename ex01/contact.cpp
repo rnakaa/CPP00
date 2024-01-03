@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 Contact::Contact(std::string first, std::string last, std::string nick, std::string num, std::string secret){
 	FirstName = first;

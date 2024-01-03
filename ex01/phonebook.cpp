@@ -1,5 +1,5 @@
-#include "contact.hpp"
-#include "phonebook.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 void PhoneBook::addcontact(int index,std::string first, std::string last, std::string nick, std::string num, std::string secret){
 	contacts[index] = Contact(first, last, nick, num, secret);
