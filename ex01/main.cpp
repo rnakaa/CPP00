@@ -8,7 +8,7 @@ int	main()
 {
 	std::string	command;
 	PhoneBook	phonebook;
-	int			count;
+	int			count; //何人めの入力か保存
 	std::string	index;
 	std::string first;
 	std::string last;
@@ -44,6 +44,8 @@ int	main()
 			count++;
 		}
 		else if (command == "SEARCH"){
+			std::cout << "phonebook = ";
+			std::cout << phonebook.getCurrentIndex()  << std::endl;
 			if (phonebook.printContacts())
 				continue ;
 			std::cout << "insert index: ";
@@ -51,10 +53,11 @@ int	main()
 			if ((int)index.length() != 1 || !std::isdigit(index[0]))
 				continue ;
 			const char * c_num = index.c_str();
-			int index_num = atoi(c_num);
-			if (index_num < 0 || index_num >= phonebook.getCurrentIndex())
+			int input_num = atoi(c_num);
+
+			if (input_num < 0 || input_num >= phonebook.getCurrentIndex())
 				continue ;
-			phonebook.printContactOneline(index_num);
+			phonebook.printContactOneline(input_num);
  		}
  		else
  			std::cout << "EXIT or ADD or SEARCH" << std::endl;

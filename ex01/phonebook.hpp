@@ -22,6 +22,7 @@ class PhoneBook
 		std::string getContactNick(int index);
 		std::string getContactNum(int index);
 		std::string getContactSecret(int index);
+		std::string extractFirstTen(std::string str);
 		void		printContactFirst(int index);
 		void 		printContactLast(int index);
 		void 		printContactNick(int index);
