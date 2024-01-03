@@ -16,10 +16,19 @@ HEADERS = Contact.hpp \
 $(TARGET) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
 
-%.o : %.cpp 
+%.o : %.cpp $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-OBJ= phonebook.o main.o contact.o
+.PHONY:all
+all:$(NAME)
 
-
+.PHONY: clean
 clean:
-	rm -f $(TARGET) $(OBJ)
+	rm -f $(OBJS) 
+
+.PHONY: fclean
+fclean: clean
+	rm -f $(TARGET) 
+
+.PHONY:re
+re:		fclean all
