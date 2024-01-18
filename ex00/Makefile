@@ -1,4 +1,4 @@
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 TARGET = megaphone
@@ -19,4 +19,8 @@ clean:
 fclean: clean
 	rm -f $(TARGET)
 
-.PHONY: clean fclean
+re: fclean all
+
+all: $(TARGET)
+
+.PHONY: clean fclean re all

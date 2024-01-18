@@ -20,7 +20,7 @@ $(TARGET) : $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY:all
-all:$(NAME)
+all:$(TARGET)
 
 .PHONY: clean
 clean:

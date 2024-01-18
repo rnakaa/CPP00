@@ -25,7 +25,7 @@ std::string PhoneBook::getContactNum(int index){
 std::string PhoneBook::getContactSecret(int index){
 	return(contacts[index].getSecret());
 }
-//----------------PRINT-------------------------------------
+
 void PhoneBook::printContactFirst(int index){
 	std::string firstname;
 
@@ -65,7 +65,8 @@ std::string PhoneBook::extractFirstTen(std::string str){
 	std::string result = str;
 
 	if (str.length() > 10){
-		result = str.substr(0,10);
+		result = str.substr(0,9);
+		result += ".";
 	}
 	return (result);
 }
@@ -102,17 +103,9 @@ void PhoneBook::incCurrentIndex(){
 }
 
 void PhoneBook::printContactOneline(int index){
-	std::cout << index;	
-	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactFirst(index);	
-	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactLast(index);	
-	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactNick(index);	
-	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactNum(index);	
-	std::cout << "|";
-	std::cout << std::setw(10) << PhoneBook::getContactSecret(index);	
-	std::cout << "|";
-	std::cout << std::endl;
+	std::cout  << "FIRSTNAME: " << PhoneBook::getContactFirst(index) << std::endl;
+	std::cout  << "LASTNAME:  "<< PhoneBook::getContactLast(index) << std::endl;	
+	std::cout  << "NICKNAME:  "<< PhoneBook::getContactNick(index) << std::endl;	
+	std::cout  << "NUMBER:    "<< PhoneBook::getContactNum(index) << std::endl;	
+	std::cout  << "SECRET:    "<< PhoneBook::getContactSecret(index) << std::endl;
 }
