@@ -6,7 +6,7 @@
 /*   By: rnaka <rnaka@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 10:40:08 by rnaka             #+#    #+#             */
-/*   Updated: 2024/01/18 17:27:17 by rnaka            ###   ########.fr       */
+/*   Updated: 2024/01/18 17:47:09 by rnaka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	{
 		for (size_t j = 0; j < std::strlen(argv[i]); j++)
 		{
-			std::cout << static_cast<char>(std::toupper(argv[i][j]));
+			std::cout << static_cast<unsigned char>(std::toupper(argv[i][j]));
 		}
 		if (static_cast<int>(i) != argc - 1)
 			std::cout << ' ';
