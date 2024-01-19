@@ -15,6 +15,7 @@ class PhoneBook
 
 		void addcontact(int index,std::string first, std::string last, std::string nick, std::string num, std::string secret);
 
+		PhoneBook();
 		int			getCurrentIndex();
 		void		incCurrentIndex();
 		std::string getContactFirst(int index);
@@ -31,5 +32,7 @@ class PhoneBook
 		void 		printContact(int index);
 		void 		printContactOneline(int index);
 		int	 		printContacts();
+		void		search();
+		void		add(int count);
 };
 #endif

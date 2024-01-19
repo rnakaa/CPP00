@@ -1,6 +1,10 @@
 #include "contact.hpp"
 #include "phonebook.hpp"
 
+PhoneBook::PhoneBook(){
+	current_index = 0;
+}
+
 void PhoneBook::addcontact(int index,std::string first, std::string last, std::string nick, std::string num, std::string secret){
 	contacts[index] = Contact(first, last, nick, num, secret);
 	incCurrentIndex();
@@ -108,4 +112,47 @@ void PhoneBook::printContactOneline(int index){
 	std::cout  << "NICKNAME:  "<< PhoneBook::getContactNick(index) << std::endl;	
 	std::cout  << "NUMBER:    "<< PhoneBook::getContactNum(index) << std::endl;	
 	std::cout  << "SECRET:    "<< PhoneBook::getContactSecret(index) << std::endl;
+}
+
+void PhoneBook::search(){
+	std::string index;
+
+	if (this->printContacts())
+		return ;
+	std::cout << "insert index: ";
+	std::cin >> index;
+	if (index.length() != 1 || !std::isdigit(index[0]))
+	{
+		std::cout << "input error" << std::endl;
+		return ;
+	}
+	const char * c_num = index.c_str();
+	int input_num = atoi(c_num);
+
+	if (input_num < 0 || input_num >= this->getCurrentIndex())
+	{
+		std::cout << "input error" << std::endl;
+		return ;
+	}
+	this->printContactOneline(input_num);
+}
+
+void PhoneBook::add(int count){
+	std::string first;
+	std::string last;
+	std::string nick;
+	std::string num;
+	std::string secret;
+
+	std::cout << "First Name" << std::endl;
+	std::cin >> first;
+	std::cout << "Last Name" << std::endl;
+	std::cin >> last;
+	std::cout << "Nick Name" << std::endl;
+	std::cin >> nick;
+	std::cout << "Number" << std::endl;
+	std::cin >> num;
+	std::cout << "Secret" << std::endl;
+	std::cin >> secret;
+	this->addcontact(count % 8, first, last, nick, num, secret);
 }

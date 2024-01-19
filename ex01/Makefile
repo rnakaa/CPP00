@@ -10,8 +10,8 @@ SRCS =  main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-HEADERS = Contact.hpp \
-	PhoneBook.hpp
+HEADERS = contact.hpp \
+	phonebook.hpp
 
 $(TARGET) : $(OBJS)
 	$(CXX) $(CFLAGS) -o $@ $(OBJS)
