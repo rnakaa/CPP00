@@ -13,14 +13,7 @@ class Contact
  		std::string PhoneNumber;
  		std::string Secret;
 	public:
-		Contact(){
-			FirstName = "First";
-			LastName = "Last";
-			NickName = "Nick";
-			PhoneNumber = "Phone";
-			Secret = "Secret";
-		}
-
+		Contact();
 		std::string getFirst();
 		std::string getLast();
 		std::string getNick();

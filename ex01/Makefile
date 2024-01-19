@@ -1,12 +1,12 @@
-CC = c++
+CXX = c++
 
 CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 TARGET = PhoneBook
 
 SRCS =  main.cpp \
-	PhoneBook.cpp \
-	Contact.cpp
+	phonebook.cpp \
+	contact.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -14,10 +14,10 @@ HEADERS = Contact.hpp \
 	PhoneBook.hpp
 
 $(TARGET) : $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CFLAGS) -o $@ $(OBJS)
 
 %.o : %.cpp $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CFLAGS) -c $< -o $@
 
 .PHONY:all
 all:$(TARGET)
