@@ -12,9 +12,7 @@ class PhoneBook
 		Contact	contacts[8];
 		int	current_index;
 	public:
-
 		void addcontact(int index,std::string first, std::string last, std::string nick, std::string num, std::string secret);
-
 		PhoneBook();
 		int			getCurrentIndex();
 		void		incCurrentIndex();
